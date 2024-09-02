@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Tip Calculator</h1>
+
+    <form id="inputForm">
+      <div id="fieldsContainer">
+        <div class="field">
+          <p>Names:</p>
+          <input class="input" type="text" name="key" placeholder="Names" required>
+          <p>Amount:</p>
+          <input class="input" type="number" name="value" placeholder="Amount" required>
+        </div>
+      </div>
+      
+      <button type="button" class="button" onclick="addField()">Add more fields</button>
+      <button type="submit" class="button bg-violet" id="sendButton">Count it!</button>
+    </form>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>
