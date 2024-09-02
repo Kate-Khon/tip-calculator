@@ -16,15 +16,12 @@ h1 {
 }
 
 h2 {
+  margin-top: 12px;
   font-size: 20px;
 }
 
 p {
   padding: 6px 4px;
-}
-
-form {
-  margin-bottom: 12px;
 }
 
 .fields-container > .field:first-child {

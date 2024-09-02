@@ -43,8 +43,6 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
       data[keys[i]] = parseFloat(values[i]);
     }
 
-    console.log(data, 'info');
-
     function sortObjectKeysAndValues(obj) {
       const entries = Object.entries(obj);
       const sortedEntries = entries.sort(([, valueA], [, valueB]) => valueB - valueA);
@@ -59,8 +57,6 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
     const dataKeys = sortedData[0];
     const dataValues = sortedData[1];
     const uniqueDataValues = new Set(dataValues);
-
-    console.log('dataValues: ', dataValues);
 
     if (uniqueDataValues.size !== dataValues.length) {
       alert(`The amounts must difer. Please check your data and try entering again.`);
@@ -86,20 +82,16 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 
           const tipAmount = currentTipAmount / namesLength;
           const isKeyExist = resultObject[names[ii]];
-          console.log(isKeyExist);
 
           if (isKeyExist) {
             resultObject[names[ii]] += tipAmount;
           } else {
             resultObject[names[ii]] = tipAmount;
           }
-
-          console.log(resultObject);
         }
       }
 
       for (let key in resultObject) {
-        console.log(key);
         const resultParagraph = document.createElement("p");
         resultParagraph.textContent = `${key}: ${resultObject[key]}`;
         document.body.appendChild(resultParagraph);
