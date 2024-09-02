@@ -24,6 +24,11 @@ p {
   padding: 6px 4px;
 }
 
+form {
+  margin-bottom: 26px;
+  border: 1px solid transparent;
+}
+
 .fields-container > .field:first-child {
   margin-bottom: 20px;
 }
