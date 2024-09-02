@@ -3,7 +3,7 @@ const newField = `
     <p>Names:</p>
     <input class="input" type="text" name="key" placeholder="Names" required>
     <p>Amount:</p>
-    <input class="input" type="number" name="value" placeholder="Amount" required>
+    <input class="input" type="number" step="0.01" name="value" placeholder="Amount" required>
   </div>
 `;
 
@@ -85,22 +85,25 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
           }
 
           const tipAmount = currentTipAmount / namesLength;
-          const resultParagraph = document.createElement("p");
-          // const isKeyExist = resultObject[names[ii]];
-          // console.log(isKeyExist);
+          const isKeyExist = resultObject[names[ii]];
+          console.log(isKeyExist);
 
-          // if (isKeyExist) {
-          //   resultObject[names[ii]] += tipAmount;
-          // } else {
-          //   resultObject[names[ii]] = tipAmount;
-          // }
+          if (isKeyExist) {
+            resultObject[names[ii]] += tipAmount;
+          } else {
+            resultObject[names[ii]] = tipAmount;
+          }
 
-          // console.log(currentTipAmount, namesLength, tipAmount);
-
-          resultParagraph.textContent = `${names[ii]}: ${tipAmount}`;
-          document.body.appendChild(resultParagraph);
-          event.target.reset();
+          console.log(resultObject);
         }
+      }
+
+      for (let key in resultObject) {
+        console.log(key);
+        const resultParagraph = document.createElement("p");
+        resultParagraph.textContent = `${key}: ${resultObject[key]}`;
+        document.body.appendChild(resultParagraph);
+        event.target.reset();
       }
     }
   }
