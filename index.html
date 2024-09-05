@@ -6,26 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tip Calculator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="./text-animation.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Tip Calculator</h1>
+  <h1>Tip Calculator</h1>
+  <p class="typewriter-effect">Simply add all the receipts in any order</p>
 
-    <form id="inputForm">
-      <div class="fields-container" id="fieldsContainer">
-        <div class="field">
-          <p>Names:</p>
-          <input class="input" type="text" name="key" placeholder="Names" required>
-          <p>Amount:</p>
-          <input class="input" type="number" step="0.01" name="value" placeholder="Amount" required>
-        </div>
+  <form id="inputForm">
+    <div class="fields-container" id="fieldsContainer">
+      <div class="field">
+        <p>Names:</p>
+        <input class="input" type="text" name="key" placeholder="Names" required>
+        <p class="help hint-color">Separate names with commas or spaces <br> (e.g., Alannah, Mandy OR Alannah Mandy)</p>
+        <p>Amount:</p>
+        <input class="input" type="number" step="0.01" name="value" placeholder="Amount" required>
+        <p class="help hint-color">Feel free to put in cents (e.g, 10.12)</p>
       </div>
-      
-      <button type="button" class="button" onclick="addField()">Add more fields</button>
-      <button type="submit" class="button bg-violet" id="sendButton">Count it!</button>
-    </form>
+    </div>
+    
+    <button type="button" class="button" onclick="addField()">Add more fields</button>
+    <button type="submit" class="button bg-violet" id="sendButton">Count it!</button>
+  </form>
 
   <script src="./main.js"></script>
 </body>

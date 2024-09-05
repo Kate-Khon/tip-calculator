@@ -42,3 +42,7 @@ form {
 .bg-violet {
   background-color: #950995;
 }
+
+.hint-color {
+  color: rgba(255,255,255,.70);
+}
