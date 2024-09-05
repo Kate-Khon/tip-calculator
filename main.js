@@ -93,7 +93,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
 
       for (let key in resultObject) {
         const resultParagraph = document.createElement("p");
-        resultParagraph.textContent = `${key}: ${resultObject[key]}`;
+        resultParagraph.textContent = `${key}: ${resultObject[key].toFixed(2)}`;
         document.body.appendChild(resultParagraph);
         event.target.reset();
       }
