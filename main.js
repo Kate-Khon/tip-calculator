@@ -62,7 +62,6 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
       }
 
       data[uniqueKey] = value;
-      console.log(uniqueKey);
     }
 
     let sortedData = sortObjectKeysAndValues(data);
@@ -88,7 +87,7 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
           let currentTipAmount = lastValue;
           const nextValue = dataValues[i + 1];
 
-          if (nextValue) {
+          if (nextValue || nextValue === 0) {
             currentTipAmount = dataValues[i] - nextValue;
           }
 
