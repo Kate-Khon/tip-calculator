@@ -21,6 +21,20 @@ function removeField(button) {
   fieldDiv.remove();
 }
 
+function toFormat(str) {
+  return str.charAt(0).toUpperCase() + str.toLowerCase().slice(1);
+}
+
+function sortObjectKeysAndValues(obj) {
+  const entries = Object.entries(obj);
+  const sortedEntries = entries.sort(([, valueA], [, valueB]) => valueB - valueA);
+
+  const keys = sortedEntries.map(([key]) => key.toString());
+  const values = sortedEntries.map(([, value]) => value);
+
+  return [keys, values];
+}
+
 document.getElementById('inputForm').addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -37,20 +51,18 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
       values.push(value);
     }
   }
-
+  
   if (keys.length === values.length) {
     for (let i = 0; i < keys.length; i++) {
-      data[keys[i]] = parseFloat(values[i]);
-    }
+      const value = parseFloat(values[i]);
+      let uniqueKey = keys[i];
+  
+      while (data[uniqueKey]) {
+        uniqueKey += '~';
+      }
 
-    function sortObjectKeysAndValues(obj) {
-      const entries = Object.entries(obj);
-      const sortedEntries = entries.sort(([, valueA], [, valueB]) => valueB - valueA);
-
-      const keys = sortedEntries.map(([key]) => key.toString());
-      const values = sortedEntries.map(([, value]) => value);
-
-      return [keys, values];
+      data[uniqueKey] = value;
+      console.log(uniqueKey);
     }
 
     let sortedData = sortObjectKeysAndValues(data);
@@ -81,12 +93,13 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
           }
 
           const tipAmount = currentTipAmount / namesLength;
-          const isKeyExist = resultObject[names[ii]];
+          const name = toFormat(names[ii].replace(/~/g, ''));
+          const isKeyExist = resultObject[name];
 
           if (isKeyExist) {
-            resultObject[names[ii]] += tipAmount;
+            resultObject[name] += tipAmount;
           } else {
-            resultObject[names[ii]] = tipAmount;
+            resultObject[name] = tipAmount;
           }
         }
       }
@@ -97,6 +110,11 @@ document.getElementById('inputForm').addEventListener('submit', function (event)
         document.body.appendChild(resultParagraph);
         event.target.reset();
       }
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
     }
   }
 });
